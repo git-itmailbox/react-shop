@@ -1,8 +1,16 @@
-import React from "react";
-import { Layout } from "antd";
-import Card from "./Blocks/Card";
+import React, { useState } from "react";
+import ProductList from "./Blocks/ProductList";
 
-const { Header, Footer, Sider, Content } = Layout;
+function Cart() {
+  const [products] = useState([data]);
+  return (
+    <div>
+      <ProductList products={products} />
+    </div>
+  );
+}
+
+export default Cart;
 
 const data = [
   {
@@ -27,8 +35,3 @@ const data = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png",
   },
 ];
-export const Home = () => {
-  return data.map((el) => {
-    return <Card item={el} />;
-  });
-};
