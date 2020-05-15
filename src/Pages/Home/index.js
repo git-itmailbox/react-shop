@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "antd";
 import Card from "./Blocks/Card";
 
@@ -28,11 +28,6 @@ const data = [
   },
 ];
 export const Home = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const onChange = () => {
-    setIsFlipped(isFlipped);
-  };
   return (
     <Layout>
       <Header>Header</Header>
