@@ -1,8 +1,5 @@
-import React from "react";
-import { Layout } from "antd";
-import Card from "./Blocks/Card";
-
-const { Header, Footer, Sider, Content } = Layout;
+import React from "react"
+import Card from "./Blocks/Card"
 
 const data = [
   {
@@ -26,9 +23,9 @@ const data = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png",
   },
-];
+]
 export const Home = () => {
   return data.map((el) => {
-    return <Card item={el} />;
-  });
-};
+    return <Card item={el} />
+  })
+}
