@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { Layout } from "antd";
-import Card from "./Blocks/Card";
-
-const { Header, Footer, Sider, Content } = Layout;
+import React from "react"
+import Card from "./Blocks/Card"
 
 const data = [
   {
@@ -26,27 +23,9 @@ const data = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png",
   },
-];
+]
 export const Home = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const onChange = () => {
-    setIsFlipped(isFlipped);
-  };
-  return (
-    <Layout>
-      <Header>Header</Header>
-      <Layout style={{ minHeight: "100hv" }}>
-        <Sider>Sider</Sider>
-        <Content>
-          {data.map((el) => {
-            return <Card item={el} />;
-          })}
-        </Content>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
-  );
-};
-
-// export default Home;
+  return data.map((el) => {
+    return <Card item={el} />
+  })
+}
