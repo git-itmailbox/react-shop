@@ -48,14 +48,14 @@ export const cart = (state = initialState, action) => {
 
     case ADD_TO_CART: {
       const found = state.list.find((item) => item.id === action.payload.id)
-      if (!found) {
-        const newList = [...state.list, { ...action.payload, quantity: 1 }]
-        return {
-          ...state,
-          list: newList,
-        }
-      }
-      return state
+      const newList = !found
+        ? [...state.list, { ...action.payload, quantity: 1 }]
+        : state.list.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+      return { ...state, list: newList }
     }
 
     case UPDATE_ITEM: {
