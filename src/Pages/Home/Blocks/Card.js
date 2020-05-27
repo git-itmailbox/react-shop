@@ -7,42 +7,53 @@ import { Button } from "antd/lib/index"
 const Card = ({ item, onSelectProduct, onAddToCart }) => {
   const [isFlipped, setIsFlipped] = useState(false)
 
-  const onBuyClicked = (event) => {
-    event.preventDefault()
-    console.log("onBuyClicked")
-    onAddToCart(item)
-  }
-
   const onChange = () => {
     setIsFlipped(!isFlipped)
     onSelectProduct(item)
   }
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-      <AndtCard
-        hoverable
-        style={{ width: 240 }}
-        onClick={onChange}
-        cover={
-          <img alt="example" src={item.image} style={{ minHeight: "320px" }} />
-        }>
-        <Meta title={item.name} />
-      </AndtCard>
+    <div style={style}>
+      <Button type="primary" shape="round" onClick={() => onAddToCart(item)}>
+        Buy
+      </Button>
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+        <AndtCard
+          hoverable
+          style={{ width: 240 }}
+          onClick={onChange}
+          cover={
+            <img
+              alt="example"
+              src={item.image}
+              style={{ minHeight: "320px" }}
+            />
+          }>
+          <Meta title={item.name} />
+        </AndtCard>
 
-      <AndtCard
-        hoverable
-        style={{ width: 240 }}
-        onClick={onChange}
-        cover={
-          <img alt="example" src={item.image} style={{ minHeight: "320px" }} />
-        }>
-        <Meta title={item.price} />
-        <Button type="primary" shape="round" onClick={onBuyClicked}>
-          Buy
-        </Button>
-      </AndtCard>
-    </ReactCardFlip>
+        <AndtCard
+          hoverable
+          style={{ width: 240 }}
+          onClick={onChange}
+          cover={
+            <img
+              alt="example"
+              src={item.image}
+              style={{ minHeight: "320px" }}
+            />
+          }>
+          <Meta title={item.price} />
+        </AndtCard>
+      </ReactCardFlip>
+    </div>
   )
 }
 
 export default Card
+
+const style = {
+  minHeight: 200,
+  maxWidth: 200,
+  textAlign: "center",
+  marginTop: "10px",
+}

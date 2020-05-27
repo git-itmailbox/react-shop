@@ -1,5 +1,19 @@
 import { SELECT_PRODUCT } from "store/Redux/Actions/products"
 
+export const products = (state = initialState, action) => {
+  switch (action.type) {
+    case SELECT_PRODUCT: {
+      return {
+        ...state,
+        selectedProduct: action.product,
+      }
+    }
+
+    default:
+      return state
+  }
+}
+
 const initialState = {
   list: [
     {
@@ -28,19 +42,4 @@ const initialState = {
     },
   ],
   selectedProduct: null,
-}
-
-export const products = (state = initialState, action) => {
-  switch (action.type) {
-    case SELECT_PRODUCT: {
-      console.log("in reducer", action)
-      return {
-        ...state,
-        selectedProduct: action.product,
-      }
-    }
-
-    default:
-      return state
-  }
 }
