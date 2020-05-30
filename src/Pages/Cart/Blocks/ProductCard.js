@@ -4,11 +4,9 @@ import { List } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 
 function ProductCard({ onQuantityChanged, onDeleteProduct, item }) {
-  const [product, setProduct] = useState(item)
   const [total, setTotal] = useState(0)
   const onChanged = (value) => {
-    const data = { ...product, quantity: value }
-    setProduct(data)
+    const data = { ...item, quantity: value }
     onQuantityChanged(data)
   }
 
@@ -19,17 +17,17 @@ function ProductCard({ onQuantityChanged, onDeleteProduct, item }) {
   return (
     <List.Item>
       <List.Item.Meta
-        avatar={<Avatar src={product.image} />}
-        title={product.name}
-        description={product.description}
+        avatar={<Avatar src={item.image} />}
+        title={item.name}
+        description={item.description}
       />
       <div>
-        <span>{product.price} x </span>
+        <span>{item.price} x </span>
         <InputNumber
           size="small"
           min={0}
           max={100}
-          defaultValue={product.quantity}
+          defaultValue={item.quantity}
           onChange={onChanged}
         />
         <span> = {total}</span>

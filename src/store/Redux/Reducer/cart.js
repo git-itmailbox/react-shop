@@ -57,7 +57,6 @@ export const cart = (state = initialState, action) => {
           )
       return { ...state, list: newList }
     }
-
     case UPDATE_ITEM: {
       const newList = state.list.map((item) =>
         item.id === action.payload.id ? action.payload : item
