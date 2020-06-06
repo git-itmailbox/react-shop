@@ -1,35 +1,36 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { InputNumber, Avatar, Button, Tooltip, Popconfirm } from "antd"
 import { List } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 
-const style = { textAlign: "end", marginTop: "10px" }
-
 function ProductCard({ onQuantityChanged, onDeleteProduct, item }) {
-  const [product, setProduct] = useState(item)
+  const [total, setTotal] = useState(0)
   const onChanged = (value) => {
-    const data = { ...product, quantity: value }
-    setProduct(data)
+    const data = { ...item, quantity: value }
     onQuantityChanged(data)
   }
+
+  useEffect(() => {
+    setTotal(item.quantity * item.price)
+  }, [item])
 
   return (
     <List.Item>
       <List.Item.Meta
-        avatar={<Avatar src={product.image} />}
-        title={product.name}
-        description={product.description}
+        avatar={<Avatar src={item.image} />}
+        title={item.name}
+        description={item.description}
       />
       <div>
-        <span>{product.price} x </span>
+        <span>{item.price} x </span>
         <InputNumber
           size="small"
           min={0}
           max={100}
-          defaultValue={product.quantity}
+          defaultValue={item.quantity}
           onChange={onChanged}
         />
-        <span> = {item.quantity * item.price}</span>
+        <span> = {total}</span>
         <div style={style}>
           <Popconfirm
             title="Are you sure delete this task?"
@@ -54,3 +55,5 @@ function ProductCard({ onQuantityChanged, onDeleteProduct, item }) {
 }
 
 export default ProductCard
+
+const style = { textAlign: "end", marginTop: "10px" }

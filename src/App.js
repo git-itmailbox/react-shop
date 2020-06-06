@@ -7,10 +7,10 @@ import {
   NavLink,
 } from "react-router-dom"
 import { Layout, Menu } from "antd"
-import "./App.css"
+import "App.css"
 
-import { Home } from "./Pages/Home"
-import Cart from "./Pages/Cart"
+import { Home } from "Pages/Home"
+import { Cart } from "Pages/Cart"
 
 const { Header, Footer, Sider, Content } = Layout
 
